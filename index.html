@@ -6,19 +6,22 @@
 <title>Body Map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
 
   :root {
-    --paper: #F7F3EC;
-    --ink: #201C18;
-    --ink-soft: #6b6357;
-    --thread: #2B4257;
-    --brass: #C9A24B;
-    --coral: #C1665A;
-    --kraft: #D8C9B8;
-    --kraft-line: #c7b8a3;
+    --paper: #FFF8F1;
+    --ink: #4A3B3E;
+    --ink-soft: #9A8A8D;
+    --thread: #FF8FA3;
+    --thread-deep: #FF6F8E;
+    --brass: #FFC98B;
+    --coral: #FFB4A2;
+    --lavender: #C9B8E8;
+    --mint: #A8E6CF;
+    --kraft: #FDE8EF;
+    --kraft-line: #F3D9E4;
   }
 
   body {
@@ -27,38 +30,61 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background:
-      radial-gradient(circle, #e7ded0 1px, transparent 1px) 0 0 / 22px 22px,
-      var(--paper);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    background: var(--paper);
+    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--ink);
     padding: 40px 16px 48px;
   }
 
+  /* soft floating blobs for depth, purely decorative */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: -1;
+    opacity: 0.55;
+  }
+  body::before {
+    width: 320px;
+    height: 320px;
+    top: -80px;
+    left: -100px;
+    background: var(--mint);
+  }
+  body::after {
+    width: 380px;
+    height: 380px;
+    bottom: -120px;
+    right: -120px;
+    background: var(--lavender);
+  }
+
   .eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--thread);
+    color: var(--thread-deep);
     margin: 0 0 6px;
   }
 
   h1 {
-    font-family: 'Fraunces', serif;
-    font-optical-sizing: auto;
-    font-size: 34px;
-    font-weight: 500;
-    font-style: italic;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
     margin: 0 0 6px;
-    letter-spacing: -0.3px;
-    color: var(--ink);
+    letter-spacing: -0.5px;
+    color: var(--thread-deep);
   }
 
   p.sub {
     margin: 0 0 26px;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
     color: var(--ink-soft);
   }
 
@@ -67,22 +93,22 @@
     width: 320px;
     height: 640px;
     background: #ffffff;
-    border-radius: 4px;
+    border-radius: 32px;
     box-shadow:
-      0 1px 2px rgba(32,28,24,0.06),
-      0 12px 32px rgba(32,28,24,0.10);
+      0 2px 6px rgba(255,143,163,0.10),
+      0 18px 40px rgba(255,143,163,0.22);
     overflow: hidden;
   }
 
   .stage-wrap::after {
     content: '';
     position: absolute;
-    top: 0; right: 0;
-    width: 0; height: 0;
-    border-style: solid;
-    border-width: 0 22px 22px 0;
-    border-color: transparent var(--kraft) transparent transparent;
-    filter: drop-shadow(-1px 1px 1px rgba(32,28,24,0.08));
+    top: -18px; right: -18px;
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: var(--brass);
+    opacity: 0.5;
+    z-index: -1;
     pointer-events: none;
   }
 
@@ -104,10 +130,10 @@
   }
 
   .toolbar-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--ink-soft);
     margin: 22px 0 8px;
@@ -122,8 +148,8 @@
     justify-content: flex-start;
     width: 320px;
     background: #fff;
-    border: 1px solid var(--kraft-line);
-    border-radius: 10px;
+    border: 2px solid var(--kraft-line);
+    border-radius: 20px;
     padding: 8px;
   }
 
@@ -131,20 +157,20 @@
     border: none;
     background: transparent;
     color: var(--ink);
-    padding: 8px 12px;
-    border-radius: 7px;
-    font-family: 'Inter', sans-serif;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-family: 'Quicksand', sans-serif;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s cubic-bezier(.34,1.56,.64,1);
     display: flex;
     align-items: center;
     gap: 6px;
   }
 
-  .tool-btn:hover { background: #f2ede3; }
-  button:active { transform: scale(0.97); }
+  .tool-btn:hover { background: var(--kraft); transform: scale(1.04); }
+  button:active { transform: scale(0.94); }
 
   .tool-btn.active {
     background: var(--thread);
@@ -171,12 +197,13 @@
     align-items: center;
     gap: 8px;
     background: #fff;
-    border: 1px solid var(--kraft-line);
-    padding: 8px 12px;
-    border-radius: 10px;
+    border: 2px solid var(--kraft-line);
+    padding: 8px 14px;
+    border-radius: 999px;
     font-size: 11px;
-    font-family: 'IBM Plex Mono', monospace;
-    letter-spacing: 0.5px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
     color: var(--ink-soft);
   }
@@ -187,19 +214,21 @@
   }
 
   .swatch {
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
     border: 2px solid #fff;
-    box-shadow: 0 0 0 1px var(--kraft-line), inset 0 0 0 1px rgba(255,255,255,0.4);
+    box-shadow: 0 0 0 2px var(--kraft-line), inset 0 0 0 1px rgba(255,255,255,0.4);
     cursor: pointer;
+    transition: transform 0.15s cubic-bezier(.34,1.56,.64,1);
   }
-  .swatch.active { box-shadow: 0 0 0 2px var(--ink); }
+  .swatch:hover { transform: scale(1.15); }
+  .swatch.active { box-shadow: 0 0 0 3px var(--thread-deep); }
 
   .texture-swatch {
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
     display: inline-block;
     box-shadow: 0 0 0 1px var(--kraft-line);
     flex-shrink: 0;
@@ -207,38 +236,38 @@
   .texture-solid { background: var(--thread); }
   .texture-linen {
     background:
-      repeating-linear-gradient(0deg, rgba(32,28,24,0.22) 0 1px, transparent 1px 4px),
-      repeating-linear-gradient(90deg, rgba(32,28,24,0.22) 0 1px, transparent 1px 4px),
-      #cfc3ab;
+      repeating-linear-gradient(0deg, rgba(74,59,62,0.22) 0 1px, transparent 1px 4px),
+      repeating-linear-gradient(90deg, rgba(74,59,62,0.22) 0 1px, transparent 1px 4px),
+      #f3e6da;
   }
   .texture-lace {
     background:
-      radial-gradient(circle, rgba(32,28,24,0.5) 1px, transparent 1.4px) 0 0 / 6px 6px,
-      #f2ede3;
+      radial-gradient(circle, rgba(74,59,62,0.45) 1px, transparent 1.4px) 0 0 / 6px 6px,
+      #fbeef2;
   }
   .texture-sequins {
     background:
-      radial-gradient(circle at 30% 30%, #fff 0%, var(--brass) 45%, #8a6d24 100%) 0 0 / 8px 8px,
-      radial-gradient(circle at 30% 30%, #fff 0%, var(--brass) 45%, #8a6d24 100%) 4px 4px / 8px 8px;
+      radial-gradient(circle at 30% 30%, #fff 0%, var(--brass) 45%, #cf8f3f 100%) 0 0 / 8px 8px,
+      radial-gradient(circle at 30% 30%, #fff 0%, var(--brass) 45%, #cf8f3f 100%) 4px 4px / 8px 8px;
   }
-  .texture-btn.active { background: #f2ede3; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .texture-btn.active { background: var(--kraft); color: var(--ink); box-shadow: inset 0 0 0 2px var(--thread-deep); }
 
   .colors {
     display: flex;
-    gap: 6px;
+    gap: 7px;
     background: #fff;
-    border: 1px solid var(--kraft-line);
-    padding: 8px 10px;
-    border-radius: 10px;
+    border: 2px solid var(--kraft-line);
+    padding: 8px 12px;
+    border-radius: 999px;
   }
 
   #customColor {
-    width: 20px !important;
-    height: 20px !important;
-    min-width: 20px;
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px;
     border: none !important;
-    border-radius: 5px !important;
-    box-shadow: 0 0 0 1px var(--kraft-line);
+    border-radius: 50% !important;
+    box-shadow: 0 0 0 2px var(--kraft-line);
     cursor: pointer;
     padding: 0 !important;
     background: #fff;
@@ -246,23 +275,24 @@
     -webkit-appearance: none;
   }
   #customColor::-webkit-color-swatch-wrapper { padding: 0; }
-  #customColor::-webkit-color-swatch { border: none; border-radius: 5px; }
+  #customColor::-webkit-color-swatch { border: none; border-radius: 50%; }
 
   #findBtn {
     margin-top: 22px;
     width: 320px;
     background: var(--thread);
     color: #fff;
-    padding: 15px 34px;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 17px;
-    font-weight: 500;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(43,66,87,0.28);
+    padding: 16px 34px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(255,111,142,0.35);
     letter-spacing: 0.2px;
+    transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), background 0.15s ease;
   }
-  #findBtn:hover { background: #23374a; }
+  #findBtn:hover { background: var(--thread-deep); transform: scale(1.04) translateY(-2px); }
+  #findBtn:active { transform: scale(0.96); }
   #findBtn:disabled { opacity: 0.6; }
 
   .toast {
@@ -270,10 +300,12 @@
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: var(--ink);
+    background: var(--thread-deep);
     color: #fff;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
     font-size: 13px;
     opacity: 0;
     pointer-events: none;
@@ -290,51 +322,35 @@
     width: 320px;
     margin-top: 16px;
     background: #fff;
-    border: 1px solid var(--kraft-line);
-    border-radius: 4px;
-    padding: 18px 18px 16px 30px;
+    border: 2px solid var(--kraft-line);
+    border-radius: 24px;
+    padding: 20px;
     position: relative;
-    box-shadow: 0 2px 8px rgba(32,28,24,0.06);
-  }
-  .hangtag::before {
-    content: '';
-    position: absolute;
-    left: 14px;
-    top: 18px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    border: 1.5px solid var(--ink-soft);
-    background: var(--paper);
-  }
-  .hangtag::after {
-    content: '';
-    position: absolute;
-    left: 8px;
-    top: -10px;
-    width: 20px;
-    height: 20px;
-    border: 1.5px solid var(--kraft-line);
-    border-bottom: none;
-    border-radius: 10px 10px 0 0;
+    box-shadow: 0 6px 20px rgba(255,143,163,0.14);
   }
   .hangtag-empty {
     margin: 0;
     color: var(--ink-soft);
+    font-weight: 600;
     font-size: 14px;
   }
   .hangtag-type {
-    font-family: 'IBM Plex Mono', monospace;
+    display: inline-block;
+    font-family: 'Quicksand', sans-serif;
     font-size: 10px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: var(--thread);
-    font-weight: 600;
-    margin-bottom: 4px;
+    color: #fff;
+    background: var(--thread);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-bottom: 8px;
   }
   .hangtag-desc {
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
     color: var(--ink);
     margin-bottom: 12px;
     line-height: 1.3;
@@ -345,22 +361,22 @@
     gap: 6px;
   }
   .hangtag-links a {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.3px;
-    padding: 6px 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    padding: 7px 12px;
     background: var(--paper);
-    border: 1px solid var(--kraft-line);
-    border-radius: 6px;
+    border: 2px solid var(--kraft-line);
+    border-radius: 999px;
     color: var(--ink);
     text-decoration: none;
-    font-weight: 500;
   }
   .hangtag-links a:hover { background: var(--kraft); }
   .hangtag-item + .hangtag-item {
     margin-top: 16px;
     padding-top: 16px;
-    border-top: 1px dashed var(--kraft-line);
+    border-top: 2px dashed var(--kraft-line);
   }
 
   /* left tool panel + figure, side by side to keep the page short */
@@ -375,17 +391,17 @@
   .side-panel {
     width: 190px;
     background: #fff;
-    border: 1px solid var(--kraft-line);
-    border-radius: 12px;
+    border: 2px solid var(--kraft-line);
+    border-radius: 24px;
     padding: 16px;
-    box-shadow: 0 1px 2px rgba(32,28,24,0.05);
+    box-shadow: 0 4px 16px rgba(255,143,163,0.10);
   }
 
   .panel-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--ink-soft);
     margin: 14px 0 6px;
@@ -408,9 +424,9 @@
   .size-control-vertical {
     width: 100%;
     background: #fff;
-    border: 1px solid var(--kraft-line);
-    padding: 8px 10px;
-    border-radius: 10px;
+    border: 2px solid var(--kraft-line);
+    padding: 8px 12px;
+    border-radius: 999px;
   }
   .size-control-vertical input[type="range"] { width: 100%; }
 
@@ -420,26 +436,35 @@
   }
   .colors-vertical .swatch { width: 22px; height: 22px; }
 
-  /* Find It, blooming behind it like a fabric rosette */
+  /* Find It, with a cascading bunch of bouncy little blooms trailing down one side */
   .bloom-wrap {
     position: relative;
-    margin-top: 34px;
+    margin-top: 44px;
     width: 320px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: visible;
   }
   .bloom {
     position: absolute;
-    width: 280px;
-    height: 280px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    width: 210px;
+    height: 320px;
+    right: -18px;
+    top: -128px;
     pointer-events: none;
     z-index: 0;
+    transform-origin: 65% 18%;
+    animation: bloomBounceIn 1.1s cubic-bezier(.34,1.56,.64,1) both;
+    animation-delay: 0.2s;
+  }
+  @keyframes bloomBounceIn {
+    0%   { transform: scale(0) rotate(-18deg); opacity: 0; }
+    55%  { transform: scale(1.18) rotate(6deg); opacity: 1; }
+    75%  { transform: scale(0.94) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0deg); }
   }
   #findBtn { position: relative; z-index: 1; }
 
@@ -461,16 +486,16 @@
     width: 100%;
     max-width: 340px;
     background: var(--paper);
-    border: 1px solid var(--kraft-line);
-    border-radius: 14px;
-    padding: 24px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border: 2px solid var(--kraft-line);
+    border-radius: 28px;
+    padding: 26px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
   }
 
   .paywall-close {
     position: absolute;
-    top: 12px;
-    right: 14px;
+    top: 14px;
+    right: 16px;
     background: none;
     border: none;
     font-size: 22px;
@@ -482,26 +507,27 @@
   .paywall-close:hover { color: var(--ink); }
 
   .paywall-title {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 21px;
-    font-weight: 500;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
     margin: 0 0 10px;
-    color: var(--ink);
+    color: var(--thread-deep);
   }
 
   .paywall-price {
     margin: 0 0 10px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
     color: var(--thread);
   }
   .paywall-price span {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .paywall-desc {
     font-size: 13px;
+    font-weight: 600;
     color: var(--ink-soft);
     margin: 0 0 18px;
     line-height: 1.4;
@@ -515,17 +541,19 @@
     flex: 1;
   }
   .paywall-field label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Quicksand', sans-serif;
     font-size: 10px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--ink-soft);
   }
   .paywall-field input {
-    border: 1px solid var(--kraft-line);
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-family: 'Inter', sans-serif;
+    border: 2px solid var(--kraft-line);
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
     font-size: 14px;
     background: #fff;
     color: var(--ink);
@@ -545,16 +573,16 @@
     background: var(--thread);
     color: #fff;
     border: none;
-    padding: 13px;
-    border-radius: 10px;
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 15px;
-    font-weight: 500;
+    padding: 14px;
+    border-radius: 999px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
     margin-top: 4px;
+    transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), background 0.15s ease;
   }
-  #paywallPayBtn:hover { background: #23374a; }
+  #paywallPayBtn:hover { background: var(--thread-deep); transform: scale(1.03); }
   #paywallPayBtn:disabled { opacity: 0.6; cursor: default; }
 
   .paywall-note {
@@ -568,8 +596,8 @@
 <body>
 
 <p class="eyebrow">Sketch → Identify → Shop</p>
-<h1>Fashionize</h1>
-<p class="sub">Draw the outfit you're picturing, right on the figure.</p>
+<h1>Styli</h1>
+<p class="sub">Envision your next wear.</p>
 
 <div class="hero">
 
@@ -616,9 +644,9 @@
 
   <div class="stage-wrap" id="stageWrap">
 <svg id="silhouette" viewBox="0 0 320 640" xmlns="http://www.w3.org/2000/svg">
-  <ellipse cx="160" cy="40" rx="20" ry="24" fill="#e3ded3"/>
-  <path fill="#e3ded3" d="M 148 60 C 148 70 149 78 151 84 L 169 84 C 171 78 172 70 172 60 C 164 66 156 66 148 60 Z"/>
-  <path fill="#e3ded3" d="
+  <ellipse cx="160" cy="40" rx="20" ry="24" fill="#FBD9C9"/>
+  <path fill="#FBD9C9" d="M 148 60 C 148 70 149 78 151 84 L 169 84 C 171 78 172 70 172 60 C 164 66 156 66 148 60 Z"/>
+  <path fill="#FBD9C9" d="
     M 106 96
     C 92 102 82 116 79 134
     C 76 160 75 190 75 216
@@ -629,8 +657,8 @@
     C 98 122 101 108 106 96
     Z
   "/>
-  <ellipse cx="86" cy="262" rx="11" ry="14" fill="#e3ded3"/>
-  <path fill="#e3ded3" d="
+  <ellipse cx="86" cy="262" rx="11" ry="14" fill="#FBD9C9"/>
+  <path fill="#FBD9C9" d="
     M 214 96
     C 228 102 238 116 241 134
     C 244 160 245 190 245 216
@@ -641,8 +669,8 @@
     C 222 122 219 108 214 96
     Z
   "/>
-  <ellipse cx="234" cy="262" rx="11" ry="14" fill="#e3ded3"/>
-  <path fill="#e3ded3" d="
+  <ellipse cx="234" cy="262" rx="11" ry="14" fill="#FBD9C9"/>
+  <path fill="#FBD9C9" d="
     M 148 84
     L 172 84
     C 190 86 205 91 214 98
@@ -658,7 +686,7 @@
     C 115 91 130 86 148 84
     Z
   "/>
-  <path fill="#e3ded3" d="
+  <path fill="#FBD9C9" d="
     M 127 266
     C 121 300 116 336 114 372
     C 112 408 112 444 116 478
@@ -669,8 +697,8 @@
     C 143 338 141 300 138 268
     Z
   "/>
-  <path fill="#e3ded3" d="M 109 542 L 141 542 C 147 548 149 556 145 562 L 101 562 C 99 554 102 546 109 542 Z"/>
-  <path fill="#e3ded3" d="
+  <path fill="#FBD9C9" d="M 109 542 L 141 542 C 147 548 149 556 145 562 L 101 562 C 99 554 102 546 109 542 Z"/>
+  <path fill="#FBD9C9" d="
     M 193 266
     C 199 300 204 336 206 372
     C 208 408 208 444 204 478
@@ -681,7 +709,7 @@
     C 177 338 179 300 182 268
     Z
   "/>
-  <path fill="#e3ded3" d="M 211 542 L 179 542 C 173 548 171 556 175 562 L 219 562 C 221 554 218 546 211 542 Z"/>
+  <path fill="#FBD9C9" d="M 211 542 L 179 542 C 173 548 171 556 175 562 L 219 562 C 221 554 218 546 211 542 Z"/>
 </svg>
 
   <canvas id="drawCanvas" width="320" height="640"></canvas>
@@ -690,7 +718,7 @@
 </div>
 
 <div class="bloom-wrap">
-  <svg class="bloom" viewBox="-100 -100 200 200" xmlns="http://www.w3.org/2000/svg">
+  <svg class="bloom" viewBox="0 0 210 320" xmlns="http://www.w3.org/2000/svg">
     <g id="bloomPetals"></g>
   </svg>
   <button id="findBtn">Find It</button>
@@ -703,7 +731,7 @@
     <button class="paywall-close" id="paywallClose" aria-label="Close">&times;</button>
     <p class="panel-label" style="margin-top:0;">Unlock This Match</p>
     <h2 class="paywall-title">See your shoppable results</h2>
-    <p class="paywall-price"><span>$19.99</span> one-time</p>
+    <p class="paywall-price"><span>$2.99</span> one-time</p>
     <p class="paywall-desc">Unlock this sketch's item breakdown and direct links to buy it, wherever it's sold.</p>
 
     <div class="paywall-field">
@@ -728,47 +756,81 @@
 
 <script>
 (function () {
-  // Build a fabric-rosette bloom behind the Find It button
+  // Build a cascading trail of little bouncy blossoms behind the Find It button
   (function buildBloom() {
     const svgNS = 'http://www.w3.org/2000/svg';
     const group = document.getElementById('bloomPetals');
     if (!group) return;
 
-    function petalPath(len, width) {
-      return `M0,0 C${width},-${len*0.3} ${width},-${len*0.7} 0,-${len} C-${width},-${len*0.7} -${width},-${len*0.3} 0,0 Z`;
+    const PINK = '#FF8FA3';
+    const LAVENDER = '#C9B8E8';
+    const MINT = '#A8E6CF';
+    const YELLOW = '#FFC98B';
+    const CORAL = '#FFB4A2';
+    const palette = [PINK, LAVENDER, MINT, YELLOW, CORAL];
+
+    // A gentle curving cascade of blossom positions, biggest near the top,
+    // shrinking as they trail down past the button.
+    const cascade = [
+      { x: 150, y: 26,  scale: 1.00 },
+      { x: 175, y: 78,  scale: 0.86 },
+      { x: 178, y: 134, scale: 0.72 },
+      { x: 158, y: 186, scale: 0.58 },
+      { x: 122, y: 226, scale: 0.46 },
+      { x: 80,  y: 254, scale: 0.36 },
+      { x: 40,  y: 272, scale: 0.26 }
+    ];
+
+    function makeBlossom(cx, cy, scale, color, index) {
+      const g = document.createElementNS(svgNS, 'g');
+      g.setAttribute('transform', `translate(${cx},${cy}) scale(${scale}) rotate(${(index * 37) % 360})`);
+
+      // 5 round bouncy petals arranged around a center point
+      const petalCount = 5;
+      const petalR = 11;
+      const orbit = 11;
+      for (let i = 0; i < petalCount; i++) {
+        const angle = (360 / petalCount) * i * (Math.PI / 180);
+        const px = Math.cos(angle) * orbit;
+        const py = Math.sin(angle) * orbit;
+        const petal = document.createElementNS(svgNS, 'circle');
+        petal.setAttribute('cx', px);
+        petal.setAttribute('cy', py);
+        petal.setAttribute('r', petalR);
+        petal.setAttribute('fill', color);
+        petal.setAttribute('opacity', '0.85');
+        g.appendChild(petal);
+      }
+
+      // soft center
+      const center = document.createElementNS(svgNS, 'circle');
+      center.setAttribute('r', '6.5');
+      center.setAttribute('fill', '#FFF3D6');
+      g.appendChild(center);
+
+      return g;
     }
 
-    const outerCount = 10;
-    const innerCount = 8;
-    const BRASS = '#C9A24B';
-    const CORAL = '#C1665A';
-    const INK = '#201C18';
+    cascade.forEach((spot, i) => {
+      const color = palette[i % palette.length];
+      group.appendChild(makeBlossom(spot.x, spot.y, spot.scale, color, i));
+    });
 
-    for (let i = 0; i < outerCount; i++) {
-      const angle = (360 / outerCount) * i;
-      const p = document.createElementNS(svgNS, 'path');
-      p.setAttribute('d', petalPath(58, 15));
-      p.setAttribute('transform', `rotate(${angle})`);
-      p.setAttribute('fill', i % 2 === 0 ? BRASS : CORAL);
-      p.setAttribute('opacity', '0.55');
-      group.appendChild(p);
-    }
-
-    for (let i = 0; i < innerCount; i++) {
-      const angle = (360 / innerCount) * i + 15;
-      const p = document.createElementNS(svgNS, 'path');
-      p.setAttribute('d', petalPath(36, 10));
-      p.setAttribute('transform', `rotate(${angle})`);
-      p.setAttribute('fill', i % 2 === 0 ? CORAL : BRASS);
-      p.setAttribute('opacity', '0.8');
-      group.appendChild(p);
-    }
-
-    const center = document.createElementNS(svgNS, 'circle');
-    center.setAttribute('r', '7');
-    center.setAttribute('fill', INK);
-    center.setAttribute('opacity', '0.85');
-    group.appendChild(center);
+    // a couple of tiny loose petals scattered near the trail for extra whimsy
+    const loose = [
+      { x: 190, y: 50, r: 5, color: MINT },
+      { x: 60,  y: 300, r: 4, color: PINK },
+      { x: 105, y: 210, r: 4.5, color: YELLOW }
+    ];
+    loose.forEach(dot => {
+      const c = document.createElementNS(svgNS, 'circle');
+      c.setAttribute('cx', dot.x);
+      c.setAttribute('cy', dot.y);
+      c.setAttribute('r', dot.r);
+      c.setAttribute('fill', dot.color);
+      c.setAttribute('opacity', '0.7');
+      group.appendChild(c);
+    });
   })();
 
   const canvas = document.getElementById('drawCanvas');
