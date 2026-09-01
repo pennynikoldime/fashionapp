@@ -73,11 +73,11 @@
   }
 
   h1 {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 38px;
+    font-family: 'Garamond', sans-serif;
+    font-size: 80px;
     font-weight: 700;
     margin: 0 0 6px;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.8px;
     color: var(--thread-deep);
   }
 
@@ -262,9 +262,9 @@
   }
 
   #customColor {
-    width: 22px !important;
-    height: 22px !important;
-    min-width: 22px;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px;
     border: none !important;
     border-radius: 50% !important;
     box-shadow: 0 0 0 2px var(--kraft-line);
@@ -568,6 +568,15 @@
     gap: 10px;
   }
 
+  .paywall-row .paywall-field:first-child {
+  flex: 1.5;
+}
+
+.paywall-row .paywall-field:last-child {
+  flex: 0 0 60px !important;
+  width: 60px !important;
+}
+
   #paywallPayBtn {
     width: 100%;
     background: var(--thread);
@@ -617,11 +626,6 @@
 
     <p class="panel-label">Color</p>
     <div class="colors colors-vertical" id="colorRow">
-      <div class="swatch active" data-color="#c0392b" style="background:#c0392b"></div>
-      <div class="swatch" data-color="#2b2b2b" style="background:#2b2b2b"></div>
-      <div class="swatch" data-color="#2e86de" style="background:#2e86de"></div>
-      <div class="swatch" data-color="#27ae60" style="background:#27ae60"></div>
-      <div class="swatch" data-color="#f39c12" style="background:#f39c12"></div>
       <input type="color" id="customColor" value="#c0392b" title="Choose a custom color">
     </div>
 
@@ -643,73 +647,116 @@
   </div>
 
   <div class="stage-wrap" id="stageWrap">
-<svg id="silhouette" viewBox="0 0 320 640" xmlns="http://www.w3.org/2000/svg">
-  <ellipse cx="160" cy="40" rx="20" ry="24" fill="#FBD9C9"/>
-  <path fill="#FBD9C9" d="M 148 60 C 148 70 149 78 151 84 L 169 84 C 171 78 172 70 172 60 C 164 66 156 66 148 60 Z"/>
-  <path fill="#FBD9C9" d="
-    M 106 96
-    C 92 102 82 116 79 134
-    C 76 160 75 190 75 216
-    C 75 232 77 246 82 256
-    C 86 262 92 262 95 255
-    C 91 240 90 224 90 208
-    C 90 184 92 158 96 136
-    C 98 122 101 108 106 96
-    Z
-  "/>
-  <ellipse cx="86" cy="262" rx="11" ry="14" fill="#FBD9C9"/>
-  <path fill="#FBD9C9" d="
-    M 214 96
-    C 228 102 238 116 241 134
-    C 244 160 245 190 245 216
-    C 245 232 243 246 238 256
-    C 234 262 228 262 225 255
-    C 229 240 230 224 230 208
-    C 230 184 228 158 224 136
-    C 222 122 219 108 214 96
-    Z
-  "/>
-  <ellipse cx="234" cy="262" rx="11" ry="14" fill="#FBD9C9"/>
-  <path fill="#FBD9C9" d="
-    M 148 84
-    L 172 84
-    C 190 86 205 91 214 98
-    C 209 112 204 126 200 138
-    C 204 150 205 162 202 174
-    C 205 190 207 208 207 224
-    C 207 244 202 260 194 270
-    L 126 270
-    C 118 260 113 244 113 224
-    C 113 208 115 190 118 174
-    C 115 162 116 150 120 138
-    C 116 126 111 112 106 98
-    C 115 91 130 86 148 84
-    Z
-  "/>
-  <path fill="#FBD9C9" d="
-    M 127 266
-    C 121 300 116 336 114 372
-    C 112 408 112 444 116 478
-    C 113 500 111 522 112 542
-    L 138 542
-    C 138 522 137 502 138 482
-    C 141 448 143 412 143 376
-    C 143 338 141 300 138 268
-    Z
-  "/>
-  <path fill="#FBD9C9" d="M 109 542 L 141 542 C 147 548 149 556 145 562 L 101 562 C 99 554 102 546 109 542 Z"/>
-  <path fill="#FBD9C9" d="
-    M 193 266
-    C 199 300 204 336 206 372
-    C 208 408 208 444 204 478
-    C 207 500 209 522 208 542
-    L 182 542
-    C 182 522 183 502 182 482
-    C 179 448 177 412 177 376
-    C 177 338 179 300 182 268
-    Z
-  "/>
-  <path fill="#FBD9C9" d="M 211 542 L 179 542 C 173 548 171 556 175 562 L 219 562 C 221 554 218 546 211 542 Z"/>
+<svg id="silhouette" viewBox="0 0 320 600" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(-48 -65) scale(2.0)"></g>
+
+  <!-- HEAD -->
+  <ellipse cx="160" cy="42" rx="18" ry="23" fill="#FBD9C9"/>
+
+  <!-- NECK -->
+  <path
+    d="M151 61 C151 70 151 77 149 84 L171 84
+       C169 77 169 70 169 61 C163 65 157 65 151 61Z"
+    fill="#FBD9C9"
+  />
+
+  <!-- LEFT ARM -->
+  <path
+    d="M119 94
+       C108 101 101 116 98 134
+       C94 158 92 187 93 211
+       C94 229 96 244 101 255
+       C104 261 109 261 112 256
+       C109 239 108 222 109 205
+       C110 180 113 153 117 133
+       C120 116 123 104 128 96Z"
+    fill="#FBD9C9"
+  />
+
+  <!-- LEFT HAND -->
+  <ellipse cx="106" cy="261" rx="8" ry="12" fill="#FBD9C9"/>
+
+  <!-- RIGHT ARM -->
+  <path
+    d="M201 94
+       C212 101 219 116 222 134
+       C226 158 228 187 227 211
+       C226 229 224 244 219 255
+       C216 261 211 261 208 256
+       C211 239 212 222 211 205
+       C210 180 207 153 203 133
+       C200 116 197 104 192 96Z"
+    fill="#FBD9C9"
+  />
+
+  <!-- RIGHT HAND -->
+  <ellipse cx="214" cy="261" rx="8" ry="12" fill="#FBD9C9"/>
+
+  <!-- SIMPLE TORSO - NO CHEST -->
+  <path
+    d="M149 84
+       C137 87 126 92 119 98
+       C123 114 127 128 130 141
+       C128 158 127 176 126 193
+       C125 214 127 238 134 258
+       C137 265 139 269 140 272
+
+       L180 272
+
+       C181 269 183 265 186 258
+       C193 238 195 214 194 193
+       C193 176 192 158 190 141
+       C193 128 197 114 201 98
+       C194 92 183 87 171 84Z"
+    fill="#FBD9C9"
+  />
+
+  <!-- LEFT SHORTER LEG -->
+  <path
+    d="M140 268
+       C136 298 134 326 133 354
+       C132 382 133 410 135 438
+       C133 457 132 475 133 492
+       L151 492
+       C151 474 150 457 151 440
+       C154 410 155 383 155 356
+       C155 326 153 297 151 269Z"
+    fill="#FBD9C9"
+  />
+
+  <!-- LEFT FOOT -->
+  <path
+    d="M133 492
+       L152 492
+       C157 497 157 502 154 507
+       L122 507
+       C121 501 126 496 133 492Z"
+    fill="#FBD9C9"
+  />
+
+  <!-- RIGHT SHORTER LEG -->
+  <path
+    d="M180 268
+       C184 298 186 326 187 354
+       C188 382 187 410 185 438
+       C187 457 188 475 187 492
+       L169 492
+       C169 474 170 457 169 440
+       C166 410 165 383 165 356
+       C165 326 167 297 169 269Z"
+    fill="#FBD9C9"
+  />
+
+  <!-- RIGHT FOOT -->
+  <path
+    d="M187 492
+       L168 492
+       C163 497 163 502 166 507
+       L198 507
+       C199 501 194 496 187 492Z"
+    fill="#FBD9C9"
+  />
+</g> 
 </svg>
 
   <canvas id="drawCanvas" width="320" height="640"></canvas>
@@ -772,8 +819,6 @@
     // A gentle curving cascade of blossom positions, biggest near the top,
     // shrinking as they trail down past the button.
     const cascade = [
-      { x: 150, y: 26,  scale: 1.00 },
-      { x: 175, y: 78,  scale: 0.86 },
       { x: 178, y: 134, scale: 0.72 },
       { x: 158, y: 186, scale: 0.58 },
       { x: 122, y: 226, scale: 0.46 },
@@ -818,7 +863,6 @@
 
     // a couple of tiny loose petals scattered near the trail for extra whimsy
     const loose = [
-      { x: 190, y: 50, r: 5, color: MINT },
       { x: 60,  y: 300, r: 4, color: PINK },
       { x: 105, y: 210, r: 4.5, color: YELLOW }
     ];
