@@ -319,15 +319,23 @@
   svg text { user-select: none; }
 
   .hangtag {
-    width: 320px;
-    margin-top: 16px;
-    background: #fff;
-    border: 2px solid var(--kraft-line);
-    border-radius: 24px;
-    padding: 20px;
-    position: relative;
-    box-shadow: 0 6px 20px rgba(255,143,163,0.14);
-  }
+  margin-top: 45px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 10px 0 15px;
+}
+
+.hangtag-item {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  min-width: 220px;
+  flex: 1;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
   .hangtag-empty {
     margin: 0;
     color: var(--ink-soft);
@@ -772,34 +780,6 @@
 </div>
 
 <div class="toast" id="toast">Saved!</div>
-
-<div class="paywall-overlay" id="paywallOverlay">
-  <div class="paywall-card">
-    <button class="paywall-close" id="paywallClose" aria-label="Close">&times;</button>
-    <p class="panel-label" style="margin-top:0;">Unlock This Match</p>
-    <h2 class="paywall-title">See your shoppable results</h2>
-    <p class="paywall-price"><span>$2.99</span> one-time</p>
-    <p class="paywall-desc">Unlock this sketch's item breakdown and direct links to buy it, wherever it's sold.</p>
-
-    <div class="paywall-field">
-      <label>Card number</label>
-      <input type="text" placeholder="4242 4242 4242 4242" inputmode="numeric" id="fakeCardNumber">
-    </div>
-    <div class="paywall-row">
-      <div class="paywall-field">
-        <label>Expiry</label>
-        <input type="text" placeholder="MM / YY" id="fakeCardExpiry">
-      </div>
-      <div class="paywall-field">
-        <label>CVC</label>
-        <input type="text" placeholder="123" id="fakeCardCvc">
-      </div>
-    </div>
-
-    <button id="paywallPayBtn">Pay $2.99</button>
-    <p class="paywall-note">Test mode &mdash; no real payment is processed.</p>
-  </div>
-</div>
 
 <script>
 (function () {
