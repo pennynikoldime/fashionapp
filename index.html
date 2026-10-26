@@ -1091,7 +1091,7 @@
     ctx.clearRect(0, 0, W, H);
   });
 
-  // Actual Find It logic, only runs after the mock paywall is cleared
+  // Find It logic: sends the sketch to the server for analysis
   async function runFindIt() {
     const findBtn = document.getElementById('findBtn');
 
@@ -1161,41 +1161,7 @@
     }
   }
 
-  // --- mock paywall gate ---
-  let hasUnlocked = false;
-  const paywallOverlay = document.getElementById('paywallOverlay');
-  const paywallPayBtn = document.getElementById('paywallPayBtn');
-  const paywallClose = document.getElementById('paywallClose');
-
-  document.getElementById('findBtn').addEventListener('click', () => {
-    if (hasUnlocked) {
-      runFindIt();
-    } else {
-      paywallOverlay.classList.add('show');
-    }
-  });
-
-  paywallClose.addEventListener('click', () => {
-    paywallOverlay.classList.remove('show');
-  });
-
-  paywallOverlay.addEventListener('click', (e) => {
-    if (e.target === paywallOverlay) paywallOverlay.classList.remove('show');
-  });
-
-  paywallPayBtn.addEventListener('click', () => {
-    // Mock payment: no real card is charged, no real processor is called.
-    paywallPayBtn.disabled = true;
-    paywallPayBtn.textContent = 'Processing...';
-
-    setTimeout(() => {
-      hasUnlocked = true;
-      paywallOverlay.classList.remove('show');
-      paywallPayBtn.disabled = false;
-      paywallPayBtn.textContent = 'Pay $2.99';
-      runFindIt();
-    }, 900);
-  });
+  document.getElementById('findBtn').addEventListener('click', runFindIt);
 
   function shopLinks(query) {
     const q = encodeURIComponent(query);
